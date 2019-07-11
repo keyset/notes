@@ -99,6 +99,7 @@
 # Misc
 |`Command`|Notes|
 |---|---|
+|`.load C:\Dumps\Mex\x64\mex.dll`|Load the mex DLL. `!mex.help` for help|
 |`.cls`|Clear screen|
 |`~*e <command>`|Execute command for all threads|
 |`!u, u <method intptr>`|Show the disassemble of a method|
