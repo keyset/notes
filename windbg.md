@@ -29,7 +29,7 @@
 |`!threads [-live] [-special]`|all managed threads|
 |`!dso [-verify] [top stack [bottom stack]]`|Objects stack trace (the actual object type and not where the method is)|
 |`!mdso [/a \| /r \| /c:n \| /t:<typeFilter> \| /mt:<mt>]`|Dumps object references on the stack and in CPU registers in the current context|
-|`!name2ee mscorlib.dll System.Threading.Thread`<br/><br/>`.foreach (t {!dumpheap -mt <mtaddress> -short}) {.if(poi(${t}+28)>0){.printf ”`<br/>`Thread Obj: %N, Obj Address: ${t}, Name: %N \n”,poi(${t}+28), poi(${t}+c)}}`|2 commands get the .net threads object address for each thread matching by thread obj id|
+|`!name2ee mscorlib.dll System.Threading.Thread`<br/>`.foreach (t {!dumpheap -mt <mtaddress> -short}) {.if(poi(${t}+28)>0){.printf "Thread Obj: %N, Obj Address: ${t}, Name: %N \n",poi(${t}+28), poi(${t}+c)}}`|2 commands get the .net threads object address for each thread matching by thread obj id|
  
 # Exceptions
 |`Command`|Notes|
@@ -113,7 +113,7 @@
 |`poi(<address>)`|Follow reference for the given pointer (handle) address|
 |`!SaveModule <addr> <path>`|Save the module dll to a file (can be used to get its version)|
 |`!TraverseHeap [-xml] <filename>`|Dump heap data that can be used by CLR profiler|
-|`!teb`| displays all elements of the TEB or “Thread Environment Block”|
+|`!teb`| displays all elements of the TEB or "Thread Environment Block"|
 |`!vmstat`| |
 |`!strings [ModuleAddress] [min] [max] [gen#] [filter]`|Search the managed heap or a module for strings matching the specified criteria|
 |`!mln <addr>`|Displays the type of managed data located at the specified address or the current instruction pointer|
