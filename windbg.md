@@ -13,9 +13,7 @@
 |`!sosex.help`|Like !help but for specifically for SOSEX|
 |`!sosexhelp`|Display this screen or details about the specified command (SOSEX)|
 |`!sym noisy`<br/>`[.symfix c:\symbols]`<br/>`.reload`|Load symbols if not set in environment|
-|`.load`|wow64exts|
-|`!sw`|Switched to 32bit mode after doing this|
-|`.effmach`||
+|`.load wow64exts`<br/>`!sw`<br/>`.effmach`|Switched to 32bit mode after doing this|
 
 # Examining code and stacks
 |`Command`|Notes|
@@ -43,6 +41,7 @@
 # CLR data structures
 |`Command`|Notes|
 |---|---|
+|`!eeversion`|Show GC Mode (Server/Workstation)|
 |`!eeheap -gc`|Get managed heap size|
 |`!dumpheap [-stat] [-mt <>] [-type <>] [-strings] [-min] [-max]`|What classes take space in managed heap|
 |`!dumpheap <address> <address>`|Show the object that are in the given memory segments (show only specific generation by combining with output of !eeheap -gc)|
