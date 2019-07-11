@@ -1,5 +1,4 @@
-#Loading stuff
-
+# Loading stuff
 |`Command`|Notes|
 |---|---|
 |`.loadby sos mscorwks`|Load SOS extension (will identify sos location by loaded mscorwks path)|
@@ -18,8 +17,7 @@
 |`!sw`|Switched to 32bit mode after doing this|
 |`.effmach`||
 
-#Examining code and stacks
-
+# Examining code and stacks
 |`Command`|Notes|
 |---|---|
 |`~<thread id>s`|Set active thread|
@@ -33,18 +31,16 @@
 |`!threads [-live] [-special]`|all managed threads|
 |`!dso [-verify] [top stack [bottom stack]]`|Objects stack trace (the actual object type and not where the method is)|
 |`!mdso [/a \| /r \| /c:n \| /t:<typeFilter> \| /mt:<mt>]`|Dumps object references on the stack and in CPU registers in the current context|
-|`!name2ee mscorlib.dll System.Threading.Thread`<br/>`.foreach (t {!dumpheap -mt <mtaddress> -short}) {.if(poi(${t}+28)>0){.printf ”<br/>`Thread Obj: %N, Obj Address: ${t}, Name: %N \n”,poi(${t}+28), poi(${t}+c)}}`|2 commands get the .net threads object address for each thread matching by thread obj id|
+|`!name2ee mscorlib.dll System.Threading.Thread`<br/><br/>`.foreach (t {!dumpheap -mt <mtaddress> -short}) {.if(poi(${t}+28)>0){.printf ”`<br/>`Thread Obj: %N, Obj Address: ${t}, Name: %N \n”,poi(${t}+28), poi(${t}+c)}}`|2 commands get the .net threads object address for each thread matching by thread obj id|
  
-#Exceptions
-
+# Exceptions
 |`Command`|Notes|
 |---|---|
 |`!analyze -v [-hang]`|-v Very detailed exception data (SLOW),  -hang Generates !analyze hung-application output.|
 |`!pe [<exceptionAddr>]`|most recent exception data (don’t forget the external stack)|
 |`!dae`|Dump all exception found (psscor)|
 
-#CLR data structures
-
+# CLR data structures
 |`Command`|Notes|
 |---|---|
 |`!eeheap -gc`|Get managed heap size|
@@ -63,8 +59,7 @@
 |`!gchandles`|List GC handles statistics|
 |`!gch [-handleType]`|Lists all GC Handles, optionally filtered by specified handle types|
 
-#Unmanaged Memory
-
+# Unmanaged Memory
 |`Command`|Notes|
 |---|---|
 |`gflags /i <pocess name> +ust`|Add allocation stack for this process|
@@ -74,8 +69,7 @@
 |`!heap -flt s <block size>`|Show addresses of memory blocks of specific size by heap|
 |`!heap -p -a <usrPtr>`|Display allocation call stack for given block user ptr address|
 
-#Object Inspection
-
+# Object Inspection
 |`Command`|Notes|
 |---|---|
 |`!do <address>`|information about object|
@@ -89,8 +83,7 @@
 |`!refs <addr> [-target\|-source]`|Displays all references from and to the specified object (sosex)|
 |`!DumpRCW`|.NET 4.5|
 
-#Locks
-
+# Locks
 |`Command`|Notes|
 |---|---|
 |`!syncblk [-all \| <syncblkNumber>]`|Show all sync blocks that are owned by the current thread but not thinlocks, use !DumpHeap -thinlock|
@@ -104,8 +97,7 @@
 |`dt <lockAddr>`| |
 |`!handle <handleAddr> f`|Show data on the handle, if mutex or event can show the owner (procId.ThreadId)|
 
-#Misc
-
+# Misc
 |`Command`|Notes|
 |---|---|
 |`.cls`|Clear screen|
