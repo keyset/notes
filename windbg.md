@@ -1,4 +1,5 @@
 #Loading stuff
+
 |`Command`|Notes|
 |---|---|
 |`.loadby sos mscorwks`|Load SOS extension (will identify sos location by loaded mscorwks path)|
@@ -12,14 +13,13 @@
 |`!help <command>`|Latest extension commands help (SOS,SOSEX,PSSCOR)|
 |`!sosex.help`|Like !help but for specifically for SOSEX|
 |`!sosexhelp`|Display this screen or details about the specified command (SOSEX)|
-|`!sym noisy`|
-|`[.symfix c:\symbols]`|
-|`.reload`|Load symbols if not set in environment|
+|`!sym noisy`<br/>`[.symfix c:\symbols]`<br/>`.reload`|Load symbols if not set in environment|
 |`.load`|wow64exts|
 |`!sw`|Switched to 32bit mode after doing this|
-|`.effmach`|
+|`.effmach`||
 
 #Examining code and stacks
+
 |`Command`|Notes|
 |---|---|
 |`~<thread id>s`|Set active thread|
@@ -32,12 +32,11 @@
 |`!uniqstack`|Unmanaged stacks without duplication, nice if have many worker threads|
 |`!threads [-live] [-special]`|all managed threads|
 |`!dso [-verify] [top stack [bottom stack]]`|Objects stack trace (the actual object type and not where the method is)|
-|`!mdso [/a `| /r | /c:n | /t:<typeFilter> | /mt:<mt>]|Dumps object references on the stack and in CPU registers in the current context|
-|`!name2ee mscorlib.dll System.Threading.Thread`|
-|`.foreach (t {!dumpheap -mt <mtaddress> -short}) {.if(poi(${t}+28)>0){.printf ”	2 commands get the .net threads object address for each thread matching by thread obj id`|
-|`Thread Obj: %N, Obj Address: ${t}, Name: %N \n”,poi(${t}+28), poi(${t}+c)}}`|
+|`!mdso [/a \| /r \| /c:n \| /t:<typeFilter> \| /mt:<mt>]`|Dumps object references on the stack and in CPU registers in the current context|
+|`!name2ee mscorlib.dll System.Threading.Thread`<br/>`.foreach (t {!dumpheap -mt <mtaddress> -short}) {.if(poi(${t}+28)>0){.printf ”<br/>`Thread Obj: %N, Obj Address: ${t}, Name: %N \n”,poi(${t}+28), poi(${t}+c)}}`|2 commands get the .net threads object address for each thread matching by thread obj id|
  
 #Exceptions
+
 |`Command`|Notes|
 |---|---|
 |`!analyze -v [-hang]`|-v Very detailed exception data (SLOW),  -hang Generates !analyze hung-application output.|
@@ -45,6 +44,7 @@
 |`!dae`|Dump all exception found (psscor)|
 
 #CLR data structures
+
 |`Command`|Notes|
 |---|---|
 |`!eeheap -gc`|Get managed heap size|
@@ -53,7 +53,7 @@
 |`!dumpgen <genNum> [-free] [-stat] [-type <>] [-nostrings]`|Dumps the contents of the specified generation (sosex)|
 |`!gcgen <objectAddr>`|Displays the GC generation of the specified object (sosex)|
 |`!gcroot <objectAddr> [-nostacks]`|Find how an object reference is reachable|
-|`!refs <objectAddr> [-target`|-source]|Displays all references from and to the specified object (sosex)|
+|`!refs <objectAddr> [-target\|-source]`|Displays all references from and to the specified object (sosex)|
 |`!finalizequeue`|all the object that are in finalize queue|
 |`!finq [genNum] [-stat]`|Displays objects in the finalization queue (sosex)|
 |`!frq [-stat]`|Display objects in the Freachable queue (sosex)|
@@ -64,6 +64,7 @@
 |`!gch [-handleType]`|Lists all GC Handles, optionally filtered by specified handle types|
 
 #Unmanaged Memory
+
 |`Command`|Notes|
 |---|---|
 |`gflags /i <pocess name> +ust`|Add allocation stack for this process|
@@ -74,41 +75,44 @@
 |`!heap -p -a <usrPtr>`|Display allocation call stack for given block user ptr address|
 
 #Object Inspection
+
 |`Command`|Notes|
 |---|---|
 |`!do <address>`|information about object|
 |`!dumpvc <mt> <address>`|Information about struct|
-|`!mdt [typename `| MT] [addr] [-r[:level]] [-e[:level]]|Displays the fields of an object or type, -r optionally recursively, -e optionally collections (sosex)|
+|`!mdt [typename \| MT] [addr] [-r[:level]] [-e[:level]]`|Displays the fields of an object or type, -r optionally recursively, -e optionally collections (sosex)|
 |`!mroot <addr>`|Displays GC roots for the specified object (sosex)|
 |`!objsize <addr>`|The size of the object including all fields|
 |`!dumpmt -md <addr>`|see what methods the object exposes (preJiv – ngen, Jit – jitted, None  – never been called)|
 |`!name2ee * <type name>`|Get the class data for specific type|
 |`!da <addr> [-start #] [-length #] [-details]`|Displays the contents of an array at the address 00ad28d0. starts from the second element and continues for five elements.|
-|`!refs <addr> [-target`|-source]|Displays all references from and to the specified object (sosex)|
+|`!refs <addr> [-target\|-source]`|Displays all references from and to the specified object (sosex)|
 |`!DumpRCW`|.NET 4.5|
 
 #Locks
+
 |`Command`|Notes|
 |---|---|
-|`!syncblk [-all `| <syncblkNumber>]|Show all sync blocks that are owned by the current thread but not thinlocks, use !DumpHeap -thinlock|
+|`!syncblk [-all \| <syncblkNumber>]`|Show all sync blocks that are owned by the current thread but not thinlocks, use !DumpHeap -thinlock|
 |`!DumpHeap -thinlock`|Show all the thin locks|
 |`!dlk [-d]`|Displays deadlocks between SyncBlocks and/or ReaderWriterLocks, only managed (sosex)|
 |`!critlist`|Get critical sections that threads are locked on (sieextpub)|
 |`!locks`| |
 |`!mlocks [-d]`|Lists all managed lock objects and CriticalSections and their owning threads (sosex)|
 |`!mwaits [-d]`|Lists all waiting threads and, if known, the locks they are waiting on (sosex)|
-|`!rwlock [objectAddr `| -nd]|Displays all RWLocks or, if provided a RWLock address, details of the specified lock (sosex)|
+|`!rwlock [objectAddr \| -nd]`|Displays all RWLocks or, if provided a RWLock address, details of the specified lock (sosex)|
 |`dt <lockAddr>`| |
 |`!handle <handleAddr> f`|Show data on the handle, if mutex or event can show the owner (procId.ThreadId)|
 
 #Misc
+
 |`Command`|Notes|
 |---|---|
 |`.cls`|Clear screen|
 |`~*e <command>`|Execute command for all threads|
 |`!u, u <method intptr>`|Show the disassemble of a method|
 |`!mu [addr] [-s] [-il] [-n]`|Displays a disassembly around the current instruction with interleaved source, IL and asm code (sosex)|
-|`!muf [MD`| Code Addr] [-s] [-il] [-n]|Displays a disassembly with interleaved source, IL and asm code (sosex)|
+|`!muf [MD\| Code Addr] [-s] [-il] [-n]`|Displays a disassembly with interleaved source, IL and asm code (sosex)|
 |`!dumpil <method intptr>`|Show the IL code of the method|
 |`!address <address>`|displays information about the memory that the target process or target computer uses.|
 |`!runaway`|CPU time of each thread|
