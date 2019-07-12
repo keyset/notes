@@ -2,6 +2,8 @@
 |`Command`|Notes|
 |---|---|
 |`.loadby sos mscorwks`|Load SOS extension (will identify sos location by loaded mscorwks path)|
+|`.load C:\Dumps\Mex\x64\mex.dll`|Load the mex DLL. `!mex.help` for help|
+|`.logopen /u C:\Dumps\FileName.log`|Log output to file. `/u` is Unicode|
 |`.load c:\Windows\Microsoft.NET\Framework\v2.0.50727\sos`|Load SOS extension for  .NET 2.0|
 |`.load psscor2`|Load PSSCOR for .NET 2.0 (replaces SOS)|
 |`.load sosex`|Load SOSEX extension|
@@ -99,7 +101,6 @@
 # Misc
 |`Command`|Notes|
 |---|---|
-|`.load C:\Dumps\Mex\x64\mex.dll`|Load the mex DLL. `!mex.help` for help|
 |`.cls`|Clear screen|
 |`~*e <command>`|Execute command for all threads|
 |`!u, u <method intptr>`|Show the disassemble of a method|
