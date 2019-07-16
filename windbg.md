@@ -45,6 +45,7 @@
 |---|---|
 |`!eeversion`|Show GC Mode (Server/Workstation)|
 |`!eeheap -gc`|Get managed heap size|
+|`!mex.GCHeapInfo`|Get stats about each heap by generation. `-free` for fragmentation stats|
 |`!dumpheap [-stat] [-mt <>] [-type <>] [-strings] [-min] [-max]`|What classes take space in managed heap|
 |`!dumpheap <address> <address>`|Show the object that are in the given memory segments (show only specific generation by combining with output of !eeheap -gc)|
 |`!dumpgen <genNum> [-free] [-stat] [-type <>] [-nostrings]`|Dumps the contents of the specified generation (sosex)|
