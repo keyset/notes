@@ -8,5 +8,5 @@
 |`git clean -xdf`|remove all untracked, uncommitted, and ignored files|
 |`git rebase develop`|rewind current branch to where it diverged from `develop`, fast-forward to tip of `develop`, replay current branch's commits|
 |`git stash list`|show the stash stack|
-|`git config --global alias.pullc 'rev-parse --abbrev-ref HEAD \| xargs -n 1 git pull origin'`|alias `pullc` to `pull origin currentBranch`|
-|`git config --global alias.pushc 'rev-parse --abbrev-ref HEAD \| xargs -n 1 git push origin'`|alias `pushc` to `push origin currentBranch`|
+|`git config --global alias.pullc '!git rev-parse --abbrev-ref HEAD \| xargs -n 1 git pull origin'`|alias `pullc` to `pull origin currentBranch`|
+|`git config --global alias.pushc '!git rev-parse --abbrev-ref HEAD \| xargs -n 1 git push origin'`|alias `pushc` to `push origin currentBranch`|
